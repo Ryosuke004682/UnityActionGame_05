@@ -4,12 +4,10 @@ using UnityEngine;
 
 public abstract class PlayerBaseState : State
 {
-    protected StateMachine stateMachine;
+    protected PlayerStateMachine stateMachine;
 
-    public PlayerBaseState(StateMachine stateMachine)
+    public PlayerBaseState(PlayerStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
-
-        new Vector3();
     }
 }
