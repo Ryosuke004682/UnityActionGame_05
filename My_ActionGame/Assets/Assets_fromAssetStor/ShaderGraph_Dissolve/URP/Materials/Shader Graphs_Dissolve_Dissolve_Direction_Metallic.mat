@@ -42,7 +42,7 @@ Material:
     m_Floats:
     - _Dissolve: 1
     - _EdgeColorIntensity: -2
-    - _EdgeWidth: 1
+    - _EdgeWidth: 0.173
     - _Metallic: 1
     - _NormalScale: 0
     - _QueueControl: 0
@@ -51,7 +51,7 @@ Material:
     - _Smoothness: 1
     - _SmoothnessTextureChannel: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 0, b: 1, a: 1}
+    - _BaseColor: {r: 1, g: 0, b: 0.1253066, a: 1}
     - _Color: {r: 0.11764715, g: 0, b: 1, a: 1}
     - _EdgeColor: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0.9148264, g: 0, b: 1, a: 1}
