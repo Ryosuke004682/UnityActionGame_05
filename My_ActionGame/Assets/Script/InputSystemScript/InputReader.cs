@@ -57,12 +57,14 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         
     }
 
+    //ロックオンについて
     public void OnTarget(InputAction.CallbackContext context)
     {
         if (!context.performed) { return; }
         TargetEvent?.Invoke();
     }
 
+    //ロックオン解除について
     public void OnCancel(InputAction.CallbackContext context)
     {
         if (!context.performed) { return; }
