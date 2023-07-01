@@ -5,23 +5,26 @@ public class PlayerFreeLookState : PlayerBaseState
 {
     public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine){}
 
-    private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
-    private const float AnimatorDampTime   = 0.1f;
+
+    private readonly int FreelookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
+    private readonly int FreeLookSpeedHash     = Animator.StringToHash("FreeLookSpeed");
+    private const float AnimatorDampTime       = 0.1f;
 
     public override void Enter()
     {
         stateMachine.InputReader.TargetEvent += OnTarget;
+        stateMachine.Animator.Play(FreelookBlendTreeHash);
     }
 
     public override void Tick(float deltaTime)
     {
         //移動スピード
-        float speed      = stateMachine.FreeLookMoveSpeed;
+        float   speed    = stateMachine.FreeLookMoveSpeed;
         Vector2 input    = stateMachine.InputReader.MovementValue;
         Vector3 movement = new Vector3(input.x , 0 , input.y);
 
 
-        stateMachine.transform .Translate(movement * deltaTime);
+        stateMachine.transform .Translate   (movement * deltaTime);
         stateMachine.Controller.Move(movement * speed * deltaTime);
 
         if (input == Vector2.zero)
@@ -42,16 +45,21 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.InputReader.TargetEvent -= OnTarget;
     }
 
+
     private void OnTarget()
     {
+        if (!stateMachine.Targeter.SelectTarget()) { return; }
+
+
         stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
     }
 
 
+    //滑らかに回転させる
     private void FaceMovementDirection(Vector3 movement , float deltaTime)
     {
         stateMachine.transform.rotation = Quaternion.Lerp(
-                                          stateMachine.transform.rotation,
+                                          stateMachine.transform.rotation  ,
                                           Quaternion.LookRotation(movement),
                                           deltaTime * stateMachine.RotationDamping);
     }
