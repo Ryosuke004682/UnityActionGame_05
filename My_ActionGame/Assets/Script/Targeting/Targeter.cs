@@ -5,9 +5,16 @@ using UnityEngine;
 public class Targeter : MonoBehaviour
 {
     [SerializeField] private CinemachineTargetGroup targetGroup;
-   
+
+
+    private Camera mainCamera;
     private List<Target> targets = new List<Target>();
     public  Target CurrentTarget { get; private set; }
+
+    private void Start()
+    {
+        mainCamera = Camera.main;
+    }
 
 
     private void OnTriggerEnter(Collider other)
@@ -29,12 +36,35 @@ public class Targeter : MonoBehaviour
     }
 
 
-    //自分からの距離が一番近い敵にフォーカスを当てる
+    //自分からの距離が一番近い敵にフォーカスを当てる、フォーカスを当てた時に敵の方向を向く
     public bool SelectTarget()
     {
         if (targets.Count == 0) { return false; }
 
-        CurrentTarget = targets[0];
+        Target  closestTarget = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (Target target in targets)
+        {
+            Vector2 viewPos = mainCamera.WorldToViewportPoint(target.transform.position);
+
+            if (viewPos.x < 0.0f || viewPos.x > 1.0f || viewPos.y < 0.0f || viewPos.y > 1.0f)
+            {
+                continue;
+            }
+
+            Vector2 toCenter = viewPos - new Vector2(0.5f , 0.5f);
+            
+            if(toCenter.sqrMagnitude < closestDistance)
+            {
+                closestTarget = target;
+                closestDistance = toCenter.sqrMagnitude;
+            }
+        }
+
+        if (closestTarget == null) { return false; }
+
+        CurrentTarget = closestTarget;
         targetGroup.AddMember(CurrentTarget.transform , 0.2f , 1.5f);
 
         return true;
