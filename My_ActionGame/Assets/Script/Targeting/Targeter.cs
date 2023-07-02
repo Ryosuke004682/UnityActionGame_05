@@ -5,7 +5,7 @@ using UnityEngine;
 public class Targeter : MonoBehaviour
 {
     [SerializeField] private CinemachineTargetGroup targetGroup;
-
+   
     private List<Target> targets = new List<Target>();
     public  Target CurrentTarget { get; private set; }
 

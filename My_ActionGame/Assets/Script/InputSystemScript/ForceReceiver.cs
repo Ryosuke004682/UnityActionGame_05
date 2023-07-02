@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*èdóÕÇÃê›íË*/
 public class ForceReceiver : MonoBehaviour
 {
     [SerializeField] private CharacterController controller;
