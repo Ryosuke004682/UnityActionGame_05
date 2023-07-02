@@ -7,8 +7,8 @@ public class PlayerFreeLookState : PlayerBaseState
 
 
     private readonly int FreelookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
-    private readonly int FreeLookSpeedHash     = Animator.StringToHash("FreeLookSpeed");
-    private const float AnimatorDampTime       = 0.1f;
+    private readonly int     FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
+    private const  float      AnimatorDampTime = 0.1f;
 
     public override void Enter()
     {
@@ -25,17 +25,18 @@ public class PlayerFreeLookState : PlayerBaseState
 
 
         stateMachine.transform .Translate   (movement * deltaTime);
-        stateMachine.Controller.Move(movement * speed * deltaTime);
+
+        Move(movement * stateMachine.FreeLookMoveSpeed , deltaTime);
 
         if (input == Vector2.zero)
         {
             //Playerが動かない時アニメーションを止める
-            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0, AnimatorDampTime, deltaTime);
+            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0.0f, AnimatorDampTime, deltaTime);
             return;
         }
 
         //Playerが動いてる時アニメーションを再生する。
-        stateMachine.Animator.SetFloat(FreeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
+        stateMachine.Animator.SetFloat(FreeLookSpeedHash, 1.0f, AnimatorDampTime, deltaTime);
 
         FaceMovementDirection(movement , deltaTime);
     }

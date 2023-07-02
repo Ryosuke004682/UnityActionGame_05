@@ -35,7 +35,7 @@ public class Targeter : MonoBehaviour
         if (targets.Count == 0) { return false; }
 
         CurrentTarget = targets[0];
-        targetGroup.AddMember(CurrentTarget.transform , 1.0f , 2.0f);
+        targetGroup.AddMember(CurrentTarget.transform , 0.2f , 1.5f);
 
         return true;
     }
