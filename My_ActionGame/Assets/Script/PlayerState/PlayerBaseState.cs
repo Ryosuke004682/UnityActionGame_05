@@ -12,10 +12,15 @@ public abstract class PlayerBaseState : State
         this.stateMachine = stateMachine;
     }
 
+    protected void Move(float deltaTime)
+    {
+        Move(Vector3.zero , deltaTime);
+    }
+
     /*Playerの動き*/
     protected void Move(Vector3 motion , float deltaTime)
     {
-        stateMachine.Controller.Move((motion + stateMachine.Receiveret.movement) * deltaTime);
+        stateMachine.Controller.Move((motion + stateMachine.Receiver.movement) * deltaTime);
     }
 
     /*敵にフォーカスを当てているときに動き*/
