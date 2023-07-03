@@ -18,8 +18,14 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        //移動スピード
-        float   speed    = stateMachine.FreeLookMoveSpeed;
+
+        if(stateMachine.InputReader.IsAttacking)
+        {
+            stateMachine.SwitchState(new PlayerAttackingState(stateMachine , 0));
+            return;
+        }
+
+
         Vector2 input    = stateMachine.InputReader.MovementValue;
         Vector3 movement = new Vector3(input.x , 0 , input.y);
 
