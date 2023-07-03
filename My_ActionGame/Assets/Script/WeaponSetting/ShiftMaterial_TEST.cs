@@ -13,8 +13,6 @@ public class ShiftMaterial_TEST : MonoBehaviour
 
     [SerializeField] private GameObject[] weapons;
 
-
-
     private void Start()
     {
         weapons[0].SetActive(true);
@@ -28,14 +26,14 @@ public class ShiftMaterial_TEST : MonoBehaviour
             weapons[0].SetActive(false);
             weapons[1].SetActive(true);
 
-            ActiveWeapon();
+            //ActiveWeapon();
         }
         else if(Input.GetKeyUp(KeyCode.Space))
         {
             weapons[0].SetActive(true);
             weapons[1].SetActive(false);
 
-            UnActiveWeapon();
+            //UnActiveWeapon();
         }
     }
 
@@ -51,7 +49,7 @@ public class ShiftMaterial_TEST : MonoBehaviour
     {
         Renderer rend     = weapons[0].GetComponent<Renderer>();
         Material material = rend.material;
-        material.SetFloat("_Disollve", 1.0f);
+        material.SetFloat("_Dissolve", 1.0f);
         rend.material     = material;
     }
 
