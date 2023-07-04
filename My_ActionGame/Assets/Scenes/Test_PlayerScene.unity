@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef009ace0bb1dd4c9513d1337dd2983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
 --- !u!1 &355579788 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8795075370840186503, guid: 60d1d37cf4555404b98c1182e9dd997e,
@@ -575,7 +575,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557794897}
-  m_LocalRotation: {x: -0.17008065, y: 0.00000003695407, z: 0.000000006378099, w: 0.9854302}
+  m_LocalRotation: {x: -0.17008065, y: -0.00000003695407, z: -0.000000006378099, w: 0.9854302}
   m_LocalPosition: {x: -1.100395, y: 0.6512621, z: -18.257547}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -792,7 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef009ace0bb1dd4c9513d1337dd2983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
 --- !u!1 &685885861
 GameObject:
   m_ObjectHideFlags: 0
@@ -2660,17 +2660,17 @@ PrefabInstance:
     - target: {fileID: 3040336539409751322, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09853761
+      value: 0.09853762
       objectReference: {fileID: 0}
     - target: {fileID: 3040336539409751322, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000007414321
+      value: -8.8385596e-16
       objectReference: {fileID: 0}
     - target: {fileID: 3040336539409751322, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 7.341624e-10
+      value: -2.350332e-17
       objectReference: {fileID: 0}
     - target: {fileID: 3067980127387671649, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
@@ -2885,17 +2885,17 @@ PrefabInstance:
     - target: {fileID: 4288349244219445335, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.10733865
+      value: -0.107338645
       objectReference: {fileID: 0}
     - target: {fileID: 4288349244219445335, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000015436632
+      value: -0.000000017001346
       objectReference: {fileID: 0}
     - target: {fileID: 4288349244219445335, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1.6665759e-10
+      value: -0.000000001835506
       objectReference: {fileID: 0}
     - target: {fileID: 4342150577239792778, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
@@ -2984,6 +2984,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
+      propertyPath: <Foot>k__BackingField
+      value: 
+      objectReference: {fileID: 1376772513}
+    - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
+        type: 3}
+      propertyPath: <Weapon>k__BackingField
+      value: 
+      objectReference: {fileID: 685885864}
+    - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
+        type: 3}
       propertyPath: <Receiver>k__BackingField
       value: 
       objectReference: {fileID: 355579796}
@@ -3004,9 +3014,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
+      propertyPath: <Weapon>k__BackingField.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
+        type: 3}
       propertyPath: <TargetingMoveSpeed>k__BackingField
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
+        type: 3}
+      propertyPath: <Weapon>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 685885864}
+    - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
+        type: 3}
+      propertyPath: <Weapon>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 1376772513}
     - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
       propertyPath: <Attacks>k__BackingField.Array.data[0].<Force>k__BackingField
@@ -3024,6 +3049,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[0].<Damage>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
+        type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[1].<Damage>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
+        type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[2].<Damage>k__BackingField
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
+        type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[0].<FootDamage>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
+        type: 3}
       propertyPath: <Attacks>k__BackingField.Array.data[0].<StateIndex>k__BackingField
       value: 1
       objectReference: {fileID: 0}
@@ -3031,6 +3076,11 @@ PrefabInstance:
         type: 3}
       propertyPath: <Attacks>k__BackingField.Array.data[0].<Transition>k__BackingField
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
+        type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[1].<FootDamage>k__BackingField
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
@@ -3051,6 +3101,16 @@ PrefabInstance:
         type: 3}
       propertyPath: <Attacks>k__BackingField.Array.data[2].<Transition>k__BackingField
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
+        type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[0].<WeaponDamage>k__BackingField
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
+        type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[2].<WeaponDamage>k__BackingField
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5705904981484220526, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
@@ -3325,12 +3385,12 @@ PrefabInstance:
     - target: {fileID: 7815542852661554265, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016955687
+      value: -0.00000001695569
       objectReference: {fileID: 0}
     - target: {fileID: 7815542852661554265, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000029264717
+      value: -0.0000000029264722
       objectReference: {fileID: 0}
     - target: {fileID: 7846568681148210197, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
@@ -3380,7 +3440,7 @@ PrefabInstance:
     - target: {fileID: 7858490225953727152, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7986699e-14
+      value: 1.7986699e-14
       objectReference: {fileID: 0}
     - target: {fileID: 7858490225953727152, guid: 60d1d37cf4555404b98c1182e9dd997e,
         type: 3}

@@ -8,11 +8,12 @@ public class WeaponDamage : MonoBehaviour
 
     private List<Collider> alreadyCollidedWith = new List<Collider>();
 
+    private int damage;
+
     private void OnEnable()
     {
         alreadyCollidedWith.Clear();
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,10 +22,19 @@ public class WeaponDamage : MonoBehaviour
 
         alreadyCollidedWith.Add(other);
 
-        if(other.TryGetComponent<Health>(out Health health))
+        if (other.TryGetComponent<Health>(out Health health))
         {
-            health.DealDamage(10);//とりあえず10ダメージ与える
+            health.DealDamage(damage);//ダメージを与える
         }
+    }
 
+    public void SetWeaponAttack(int weaponDamage)
+    {
+        this.damage = weaponDamage;
+    }
+
+    public void SetFootAttack(int footDamage)
+    {
+        this.damage = footDamage;
     }
 }
