@@ -18,7 +18,5 @@ public class Health : MonoBehaviour
 
         health = Mathf.Max(health - damage, 0);
         print(health);
-
     }
-
 }
