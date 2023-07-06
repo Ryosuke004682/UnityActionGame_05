@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.Scripting.APIUpdating;
 
 public class EnemyIdleState : EnemyBaseState
 {
@@ -11,39 +9,30 @@ public class EnemyIdleState : EnemyBaseState
     private const float CrossFadeDuration = 0.1f;
     private const float AnimatorDampTime  = 0.1f;
 
-
-    public EnemyIdleState(EnemyStateMachine stateMachine) : base(stateMachine)
-    {
-    }
+    public EnemyIdleState(EnemyStateMachine stateMachine) : base(stateMachine) { }
 
 
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime
-                            (LocomotionHash , CrossFadeDuration);
-
-        stateMachine.Animator.SetFloat(SpeedHash , 0.0f);
+        stateMachine.Animator.CrossFadeInFixedTime(LocomotionHash , CrossFadeDuration);
     }
-
 
     public override void Tick(float deltaTime)
     {
         Move(deltaTime);
 
-        if (IsInChaseRange())
+        //チェイス圏内だった場合チェイスさせる
+        if(IsInChaseRange())
         {
-            Debug.Log("チェイス圏内です。");
-
-            //TODO : 追いかけるアニメーションを設定
+            //ここまでは実行できてる
+            stateMachine.SwitchState(new EnemyChasingState(stateMachine));
             return;
         }
 
-        stateMachine.Animator.SetFloat(SpeedHash , 0.0f , AnimatorDampTime, deltaTime);
+        FacePlayer();
+
+        stateMachine.Animator.SetFloat(SpeedHash, 0.0f, AnimatorDampTime, deltaTime);
     }
 
-
-    public override void Exit()
-    {
-        throw new System.NotImplementedException();
-    }
+    public override void Exit() { }
 }

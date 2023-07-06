@@ -16,18 +16,29 @@ public abstract class EnemyBaseState : State
         Move(Vector3.zero, deltaTime);
     }
 
-    /*Playerの動き*/
+    /* 敵の動き */
     protected void Move(Vector3 motion, float deltaTime)
     {
         stateMachine.Controller.Move((motion + stateMachine.Receiver.movement) * deltaTime);
     }
 
+    /* Player方向に体を向ける */
+    protected void FacePlayer()
+    {
+        if (stateMachine.Player == null) { return; }
 
-    //Playerが一定範囲入ったかどうかの判定をしてるとこ
+        Vector3 lookPos = stateMachine.Player.transform.position - stateMachine.transform.position;
+        lookPos.y = 0.0f;
+
+        stateMachine.transform.rotation = Quaternion.LookRotation(lookPos);
+    }
+
+    /* チェイスの検知範囲 */
     protected bool IsInChaseRange()
     {
-        float toPlayerDistanceSqr   = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
+        float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
 
-        return toPlayerDistanceSqr <= stateMachine.PlayerChasingRange * stateMachine.PlayerChasingRange;
+        return playerDistanceSqr <= stateMachine.PlayerChasingRange * stateMachine.PlayerChasingRange;
     }
+
 }

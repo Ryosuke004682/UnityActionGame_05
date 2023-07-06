@@ -1527,7 +1527,7 @@ GameObject:
   - component: {fileID: 5485821442768520566}
   - component: {fileID: 5542842688569571135}
   - component: {fileID: 3600686923249778164}
-  - component: {fileID: 3800197427884552982}
+  - component: {fileID: 917370910418219361}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1625,7 +1625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 200
---- !u!114 &3800197427884552982
+--- !u!114 &917370910418219361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1637,7 +1637,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251fec3c78af7584693b0a9c117ed3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Animator>k__BackingField: {fileID: 5545556734902815807}
+  <Animator>k__BackingField: {fileID: 0}
+  <Controller>k__BackingField: {fileID: 0}
+  <Receiver>k__BackingField: {fileID: 0}
+  <Agent>k__BackingField: {fileID: 0}
+  <MovementSpeed>k__BackingField: 2
+  <PlayerChasingRange>k__BackingField: 15
+  <AttackRange>k__BackingField: 2
 --- !u!1 &4812843651385348728
 GameObject:
   m_ObjectHideFlags: 0

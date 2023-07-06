@@ -28,13 +28,13 @@ public class WeaponDamage : MonoBehaviour
         }
     }
 
-    public void SetWeaponAttack(int weaponDamage)
+    public void SetWeaponAttack_One(int weaponDamage_One)
     {
-        this.damage = weaponDamage;
+        this.damage = weaponDamage_One;
     }
 
-    public void SetFootAttack(int footDamage)
+    public void SetWeaponAttack_Two(int weaponDamage_Two)
     {
-        this.damage = footDamage;
+        this.damage = weaponDamage_Two;
     }
 }
