@@ -17,8 +17,8 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.Weapon.SetWeaponAttack(attack.WeaponDamage);
-        stateMachine.Foot  .SetFootAttack  (attack.FootDamage);
+        stateMachine.Weapon.SetWeaponAttack_One(attack.WeaponDamage);
+        stateMachine.Foot  .SetWeaponAttack_Two  (attack.FootDamage);
 
         //トランジションがごちゃごちゃになるのが嫌なのでCrossFadeInFixedTimeを採用
         stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName , attack.TransitionDuration);
