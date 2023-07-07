@@ -27,4 +27,7 @@ public class Attack
 
     [field: SerializeField,Tooltip("R‚è‚Å‚ÌUŒ‚—Í")]
     public int           FootDamage { get; private set; }
+
+    [field: SerializeField,Tooltip("UŒ‚‚µ‚½‚ÌƒmƒbƒNƒoƒbƒN—Ê")]
+    public float Knockback { get; private set; }
 }

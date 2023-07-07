@@ -10,9 +10,11 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public ForceReceiver         Receiver { get; private set; }
     [field: SerializeField] public NavMeshAgent             Agent { get; private set; }
     [field: SerializeField] public WeaponDamage            Weapon { get; private set; }
+    [field: SerializeField] public Health                  Health { get; private set; }
 
     [field: SerializeField] public int                 LeftAttack { get; private set; }
     [field: SerializeField] public int                RightAttack { get; private set; }
+    [field: SerializeField] public int            AttackKnockback { get; private set; }
     [field: SerializeField] public float            MovementSpeed { get; private set; }
     [field: SerializeField] public float       PlayerChasingRange { get; private set; }
     [field: SerializeField] public float              AttackRange { get; private set; }
@@ -28,6 +30,22 @@ public class EnemyStateMachine : StateMachine
 
         SwitchState(new EnemyIdleState(this));
     }
+
+    private void OnEnable()
+    {
+        Health.OnTakeDamage += HandleTakeDamage;
+    }
+
+    private void OnDestroy()
+    {
+        Health.OnTakeDamage -= HandleTakeDamage;
+    }
+
+    private void HandleTakeDamage()
+    {
+        SwitchState(new EnemyImpactState(this));
+    }
+
 
     /*デバッグしやすいように検知範囲を可視化*/
     private void OnDrawGizmosSelected()

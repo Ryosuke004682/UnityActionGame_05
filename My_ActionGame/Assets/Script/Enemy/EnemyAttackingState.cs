@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class EnemyAttackingState : EnemyBaseState
 {
-    private readonly int LeftAttack  = Animator.StringToHash("EnemyAttack");
-    private readonly int RightAttack = Animator.StringToHash("EnemyAttack1");
+    private readonly int LeftAttack  = Animator.StringToHash("Attack");
 
     private Attack attack;
 
@@ -17,7 +16,7 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Enter()
     {
-        stateMachine.Weapon.SetWeaponAttack_One(stateMachine.LeftAttack);
+        stateMachine.Weapon.SetWeaponAttack_One(stateMachine.LeftAttack , stateMachine.AttackKnockback);
 
 
         stateMachine.Animator.CrossFadeInFixedTime(LeftAttack , TransitionDuration);
@@ -25,7 +24,10 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-       
+        if (GetNormalizedTime(stateMachine.Animator) >= 1)
+        {
+            stateMachine.SwitchState(new EnemyChasingState(stateMachine));
+        }
     }
 
     public override void Exit()

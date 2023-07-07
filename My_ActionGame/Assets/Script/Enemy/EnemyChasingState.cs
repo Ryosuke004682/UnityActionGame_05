@@ -52,14 +52,16 @@ public class EnemyChasingState : EnemyBaseState
     /* –Ú“I’n‚ğPlayer‚Æ‚µ‚ÄA’Ç‚¢‚©‚¯‚é‚Æ‚±‚ë */
     private void MoveToPlayer(float deltaTime)
     {
-        stateMachine.Agent.destination = stateMachine.Player.transform.position;
+        if(stateMachine.Agent.isOnNavMesh)
+        {
+            stateMachine.Agent.destination = stateMachine.Player.transform.position;
 
-        var moveSpeed = stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed; 
+            var moveSpeed = stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed;
 
-        Move(moveSpeed , deltaTime);
+            Move(moveSpeed, deltaTime);
+        }
 
         stateMachine.Agent.velocity = stateMachine.Controller.velocity;
-
     }
 
     /* UŒ‚”ÍˆÍ‚Ìİ’è */
