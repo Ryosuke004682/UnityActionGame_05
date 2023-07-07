@@ -16,8 +16,8 @@ AnimatorStateMachine:
     m_State: {fileID: 9207658797314098184}
     m_Position: {x: 570, y: 110, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 6767024209070270762}
-    m_Position: {x: 570, y: 180, z: 0}
+    m_State: {fileID: 3585172437530529445}
+    m_Position: {x: 570, y: 20, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -40,7 +40,7 @@ BlendTree:
     m_Motion: {fileID: 7400000, guid: 435da2487d45c9e4c8589dd1c13ee72d, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
+    m_TimeScale: 0.2
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
@@ -87,15 +87,15 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &6767024209070270762
+--- !u!1102 &3585172437530529445
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyAttack 1
-  m_Speed: 2
+  m_Name: DamageReaction
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -107,8 +107,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e241b36b188526c479b0ca531df5de1b, type: 2}
-  m_Tag: EnemyAttack
+  m_Motion: {fileID: 7400000, guid: c24e36737c8ca7e48b44619ae5030e1c, type: 2}
+  m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -146,7 +146,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyAttack
+  m_Name: Attack
   m_Speed: 2
   m_CycleOffset: 0
   m_Transitions: []
@@ -160,7 +160,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: f857c4632bf8abc47ab412d7fb1e12cf, type: 2}
-  m_Tag: EnemyAttack
+  m_Tag: Attack
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 

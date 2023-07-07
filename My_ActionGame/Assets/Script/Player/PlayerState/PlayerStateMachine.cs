@@ -26,6 +26,9 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField]
     public Attack[]               Attacks { get; private set; }
 
+    [field: SerializeField]
+    public Health                  Health { get; private set; }
+
 
     [field: SerializeField]
     public float       TargetingMoveSpeed { get; private set; }
@@ -40,6 +43,21 @@ public class PlayerStateMachine : StateMachine
     private void Start()
     {
         SwitchState(new PlayerFreeLookState(this));
+    }
+
+    private void OnEnable()
+    {
+        Health.OnTakeDamage += HandleTakeDamage;
+    }
+
+    private void OnDestroy()
+    {
+        Health.OnTakeDamage -= HandleTakeDamage;
+    }
+
+    private void HandleTakeDamage()
+    {
+        SwitchState(new PlayerImpactState(this));
     }
 
 }
