@@ -43,6 +43,7 @@ public class Targeter : MonoBehaviour
         Target  closestTarget = null;
         float closestDistance = Mathf.Infinity;
 
+
         foreach (Target target in targets)
         {
             Vector2 viewPos = mainCamera.WorldToViewportPoint(target.transform.position);
@@ -56,7 +57,7 @@ public class Targeter : MonoBehaviour
             
             if(toCenter.sqrMagnitude < closestDistance)
             {
-                closestTarget = target;
+                closestTarget   = target;
                 closestDistance = toCenter.sqrMagnitude;
             }
         }
@@ -84,7 +85,7 @@ public class Targeter : MonoBehaviour
         if(CurrentTarget == target)
         {
             targetGroup.RemoveMember(CurrentTarget.transform);
-            CurrentTarget = null;
+            CurrentTarget   = null;
         }
 
         target.OnDestroyed -= RemoveTarget;

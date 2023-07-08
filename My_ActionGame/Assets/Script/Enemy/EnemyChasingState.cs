@@ -31,8 +31,6 @@ public class EnemyChasingState : EnemyBaseState
         /* UŒ‚”ÍˆÍ */
         else if(IsInAttackRange())
         {
-            Debug.Log("‚±‚±‚Í’Ê‚Á‚Ä‚éI");
-
             stateMachine.SwitchState(new EnemyAttackingState(stateMachine));
             return;
         }

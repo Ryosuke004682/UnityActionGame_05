@@ -11,10 +11,13 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public NavMeshAgent             Agent { get; private set; }
     [field: SerializeField] public WeaponDamage            Weapon { get; private set; }
     [field: SerializeField] public Health                  Health { get; private set; }
+    [field: SerializeField] public Target                  Target { get; private set; }
+    [field: SerializeField] public Ragdoll                Ragdoll { get; private set; }
 
     [field: SerializeField] public int                 LeftAttack { get; private set; }
     [field: SerializeField] public int                RightAttack { get; private set; }
     [field: SerializeField] public int            AttackKnockback { get; private set; }
+
     [field: SerializeField] public float            MovementSpeed { get; private set; }
     [field: SerializeField] public float       PlayerChasingRange { get; private set; }
     [field: SerializeField] public float              AttackRange { get; private set; }
@@ -22,11 +25,15 @@ public class EnemyStateMachine : StateMachine
 
     public GameObject Player { get; private set; }
 
+
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+
         Agent.updatePosition = false;
         Agent.updateRotation = false;
+
+
 
         SwitchState(new EnemyIdleState(this));
     }
@@ -34,11 +41,13 @@ public class EnemyStateMachine : StateMachine
     private void OnEnable()
     {
         Health.OnTakeDamage += HandleTakeDamage;
+        Health.OnDeath      += HandleDeath;
     }
 
     private void OnDestroy()
     {
         Health.OnTakeDamage -= HandleTakeDamage;
+        Health.OnDeath      -= HandleDeath ;
     }
 
     private void HandleTakeDamage()
@@ -46,6 +55,10 @@ public class EnemyStateMachine : StateMachine
         SwitchState(new EnemyImpactState(this));
     }
 
+    private void HandleDeath()
+    {
+        SwitchState(new EnemyDeathState(this));
+    }
 
     /*デバッグしやすいように検知範囲を可視化*/
     private void OnDrawGizmosSelected()
