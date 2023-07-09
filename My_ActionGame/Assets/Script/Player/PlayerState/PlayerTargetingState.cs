@@ -7,10 +7,10 @@ public class PlayerTargetingState : PlayerBaseState
 {
 
     private readonly int TargetingBlendTreeHash = Animator.StringToHash("TargetingBlendTree");
-    private readonly int   TargetingForwardHash = Animator.StringToHash("TargetingForward");
-    private readonly int     TargetingRightHash = Animator.StringToHash("TargetingRight");
+    private readonly int TargetingForwardHash   = Animator.StringToHash("TargetingForward");
+    private readonly int TargetingRightHash     = Animator.StringToHash("TargetingRight");
 
-    private const float CrossFadeDuration = 0.1f;
+    private const  float CrossFadeDuration      = 0.1f;
 
     public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine) { }
     
@@ -27,6 +27,13 @@ public class PlayerTargetingState : PlayerBaseState
             stateMachine.SwitchState(new PlayerAttackingState(stateMachine , 0));
             return;
         }
+
+        if(stateMachine.InputReader.IsBlocking)
+        {
+            stateMachine.SwitchState(new PlayerBlockingState(stateMachine));
+            return;
+        }
+
 
         if(stateMachine.Targeter.CurrentTarget == null)
         {
