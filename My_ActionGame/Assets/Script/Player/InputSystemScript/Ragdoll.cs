@@ -4,10 +4,10 @@ using UnityEngine;
 /*‘Ì‚Ì•”ˆÊ‚É*/
 public class Ragdoll : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    [SerializeField] private Animator              animator;
     [SerializeField] private CharacterController controller;
 
-    private Collider[]  allColliders;
+    private Collider[]    allColliders;
     private Rigidbody[] allRigidbodies;
 
     private void Start()
@@ -15,7 +15,7 @@ public class Ragdoll : MonoBehaviour
         allColliders   = GetComponentsInChildren<Collider> (true);
         allRigidbodies = GetComponentsInChildren<Rigidbody>(true);
 
-        ToggleRagdoll(true);
+        ToggleRagdoll(false);//€‚ñ‚¾‚Æ‚«‚ÉTrue‚É‚·‚éB
     }
 
 

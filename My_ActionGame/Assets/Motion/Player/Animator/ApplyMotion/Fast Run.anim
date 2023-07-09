@@ -45156,7 +45156,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.18333334
-    functionName: PlayerFootstepSound
+    functionName: PlayFootstepSound
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 91b44c5e83d94f84295d2342956db7ad,
       type: 3}
@@ -45164,10 +45164,17 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.41666666
-    functionName: PlayerFootstepSound
+    functionName: PlayFootstepSound
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 91b44c5e83d94f84295d2342956db7ad,
       type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5
+    functionName: StopSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

@@ -36,6 +36,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
         Move(movement * stateMachine.FreeLookMoveSpeed , deltaTime);
 
+
         if (input == Vector2.zero)
         {
             //Playerが動かない時アニメーションを止める

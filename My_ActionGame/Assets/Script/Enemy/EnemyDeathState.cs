@@ -8,7 +8,7 @@ public class EnemyDeathState : EnemyBaseState
 
     public override void Enter()
     {
-        stateMachine.Ragdoll.ToggleRagdoll(true);
+        stateMachine.Ragdoll.ToggleRagdoll(true);//Ž€–S‚³‚¹‚é
 
         stateMachine.Weapon.gameObject.SetActive(false);
         GameObject.Destroy(stateMachine.Target);

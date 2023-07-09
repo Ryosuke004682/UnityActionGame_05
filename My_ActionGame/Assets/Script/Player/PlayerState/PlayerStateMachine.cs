@@ -26,13 +26,15 @@ public class PlayerStateMachine : StateMachine
     private void OnEnable()
     {
         Health.OnTakeDamage += HandleTakeDamage;
-        Health.OnDeath      += HandleDeath;
+        Health.OnDeath      += HandleDie;
+
+        Debug.Log("�Ă΂�Ă邺");
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         Health.OnTakeDamage -= HandleTakeDamage;
-        Health.OnDeath      -= HandleDeath;
+        Health.OnDeath      -= HandleDie;
     }
 
     private void HandleTakeDamage()
@@ -40,7 +42,7 @@ public class PlayerStateMachine : StateMachine
         SwitchState(new PlayerImpactState(this));
     }
 
-    private void HandleDeath()
+    private void HandleDie()
     {
         SwitchState(new PlayerDeathState(this));
     }
