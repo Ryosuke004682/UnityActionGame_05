@@ -5,8 +5,6 @@ public class EnemyAttackingState : EnemyBaseState
 {
     private readonly int LeftAttack  = Animator.StringToHash("Attack");
 
-    private Attack attack;
-
     private const  float  TransitionDuration = 0.1f;
 
     public EnemyAttackingState(EnemyStateMachine stateMachine) : base(stateMachine) 
@@ -16,6 +14,8 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Enter()
     {
+        FacePlayer();
+
         stateMachine.Weapon.SetWeaponAttack_One(stateMachine.LeftAttack , stateMachine.AttackKnockback);
 
 
@@ -28,6 +28,8 @@ public class EnemyAttackingState : EnemyBaseState
         {
             stateMachine.SwitchState(new EnemyChasingState(stateMachine));
         }
+
+        FacePlayer();
     }
 
     public override void Exit()

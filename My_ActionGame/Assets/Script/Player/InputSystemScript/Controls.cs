@@ -541,7 +541,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
+        void OnLook  (InputAction.CallbackContext context);
         void OnTarget(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
