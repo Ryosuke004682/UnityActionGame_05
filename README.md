@@ -8,9 +8,12 @@ UnrealEngineばかり使っていたので、忘れないようにUnityとC#を�
 また、InputSystemという新しい実装方法や、コードを綺麗に書くための本などを読んで実際に試してみたくなったので作りました。
 ___
 ### ゲームのプレイの様子  
+![スクリーンショット (109)](https://github.com/Ryosuke004682/UnityActionGame_05/assets/83821881/e5e41ab1-8784-4fe5-bd39-c5e5f4a2eb53)
+
+![スクリーンショット (110)](https://github.com/Ryosuke004682/UnityActionGame_05/assets/83821881/03515109-c86d-4448-9aac-7fc6e80a062e)
 
 動画で見たい方はこちらから☟  
-
+https://youtu.be/OPzgFFwQl8g
 ___  
 ### 詳細  
 | データ管理ツール | GitHub、SourceTree (ブランチ管理がしやすいので採用しました。)|
