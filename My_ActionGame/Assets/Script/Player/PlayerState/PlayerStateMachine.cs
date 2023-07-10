@@ -15,6 +15,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Ragdoll                Ragdoll { get; private set; }
     [field: SerializeField] public ParticleSystem        Particle { get; private set; }
     [field: SerializeField] public GameObject        MyGameObject { get; private set; }
+    [field: SerializeField] public LedgeDetector    LedgeDetector { get; private set; }
 
 
     [field: SerializeField] public float TargetingMoveSpeed { get; private set; }
@@ -33,6 +34,9 @@ public class PlayerStateMachine : StateMachine
     private void Start()
     {
         Particle.Stop();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible   = false;
 
         MainCameraTansform = Camera.main.transform;
 

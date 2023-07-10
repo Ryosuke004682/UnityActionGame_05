@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerFallingState : PlayerBaseState
@@ -18,6 +16,8 @@ public class PlayerFallingState : PlayerBaseState
         momentum.y = 0.0f;
 
         stateMachine.Animator.CrossFadeInFixedTime(FallHash, CrossFadeDuration);
+
+        stateMachine.LedgeDetector.OnLedgeDetect += HandleLedgeDetect;
     }
 
 
@@ -36,7 +36,12 @@ public class PlayerFallingState : PlayerBaseState
 
     public override void Exit()
     {
+        stateMachine.LedgeDetector.OnLedgeDetect += HandleLedgeDetect;
+    }
 
+    private void HandleLedgeDetect(Vector3 ledgeForward, Vector3 closestPoint)
+    {
+        stateMachine.SwitchState(new PLayerHangingState(stateMachine , ledgeForward, closestPoint));
     }
 
 }

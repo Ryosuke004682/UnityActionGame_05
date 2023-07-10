@@ -1,22 +1,41 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
-    public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine){}
+    private bool shouldFade;
 
 
     private readonly int FreelookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
-    private readonly int     FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
-    private const  float      AnimatorDampTime = 0.1f;
+    private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
+    private const float AnimatorDampTime = 0.1f;
 
     private const float CrossFadeDuration = 0.1f;
+
+
+    public PlayerFreeLookState(PlayerStateMachine stateMachine , bool shouldFade = true) : base(stateMachine)
+    {
+        this.shouldFade = shouldFade;
+    }
 
 
     public override void Enter()
     {
         stateMachine.InputReader.TargetEvent += OnTarget;
         stateMachine.InputReader.JumpEvent   += OnJump  ;
+
+        stateMachine.Animator.SetFloat(FreeLookSpeedHash , 0.0f);
+
+        if(shouldFade)
+        {
+            stateMachine.Animator.CrossFadeInFixedTime(FreelookBlendTreeHash , CrossFadeDuration);
+        }
+        else
+        {
+            stateMachine.Animator.Play(FreelookBlendTreeHash);
+        }
+
 
         stateMachine.Animator.CrossFadeInFixedTime(FreelookBlendTreeHash , CrossFadeDuration);
     }
