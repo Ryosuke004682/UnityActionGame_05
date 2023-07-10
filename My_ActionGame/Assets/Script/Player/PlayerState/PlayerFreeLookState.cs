@@ -12,11 +12,15 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private const float CrossFadeDuration = 0.1f;
 
+
     public override void Enter()
     {
         stateMachine.InputReader.TargetEvent += OnTarget;
+        stateMachine.InputReader.JumpEvent   += OnJump  ;
+
         stateMachine.Animator.CrossFadeInFixedTime(FreelookBlendTreeHash , CrossFadeDuration);
     }
+
 
     public override void Tick(float deltaTime)
     {
@@ -50,10 +54,13 @@ public class PlayerFreeLookState : PlayerBaseState
         FaceMovementDirection(movement , deltaTime);
     }
 
+
     public override void Exit()
     {
         stateMachine.InputReader.TargetEvent -= OnTarget;
+        stateMachine.InputReader.JumpEvent   -= OnJump  ;
     }
+
 
     private void OnTarget()
     {
@@ -61,6 +68,11 @@ public class PlayerFreeLookState : PlayerBaseState
 
 
         stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+    }
+
+    private void OnJump()
+    {
+        stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
     }
 
 

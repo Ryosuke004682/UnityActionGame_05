@@ -70508,7 +70508,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.71666664
-    functionName: AttackSound
+    functionName: PlayerAttackSound
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerTargetingState : PlayerBaseState
 {
+    private Vector2 dodgingDirectionInput;
+    private float      remainingDodgeTime;
 
     private readonly int TargetingBlendTreeHash = Animator.StringToHash("TargetingBlendTree");
     private readonly int TargetingForwardHash   = Animator.StringToHash("TargetingForward");
@@ -17,6 +19,10 @@ public class PlayerTargetingState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.InputReader.CancelEvent += OnCancel;
+        stateMachine.InputReader.DodgeEvent  += OnDodge ;
+        stateMachine.InputReader.JumpEvent   += OnJump  ;
+
+
         stateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTreeHash , CrossFadeDuration);
     }
 
@@ -41,7 +47,7 @@ public class PlayerTargetingState : PlayerBaseState
             return;
         }
 
-        Vector3 movement = CalcurationMovement();
+        Vector3 movement = CalcurationMovement(deltaTime);
         Move(movement * stateMachine.TargetingMoveSpeed, deltaTime);
 
         UpdateAnimator(deltaTime);
@@ -52,6 +58,8 @@ public class PlayerTargetingState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.InputReader.CancelEvent -= OnCancel;
+        stateMachine.InputReader.DodgeEvent  -= OnDodge ;
+        stateMachine.InputReader.JumpEvent   -= OnJump  ;
     }
 
     private void OnCancel()
@@ -61,12 +69,62 @@ public class PlayerTargetingState : PlayerBaseState
         stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
     }
 
-    private Vector3 CalcurationMovement()
+    private void OnDodge()
+    {
+        if (Time.time - stateMachine.PreviousDodgeTime < stateMachine.DodgeCooldown) { return; }
+
+
+        //回避のクールタイムを設定
+        stateMachine.SetDodgeTime(Time.time);
+
+        dodgingDirectionInput = stateMachine.InputReader.MovementValue;
+        remainingDodgeTime    = stateMachine.DodgeDuration;
+
+        stateMachine.Particle.Play();
+        stateMachine.MyGameObject.SetActive(false);
+    }
+
+    private void OnJump()
+    {
+        stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
+    }
+
+
+
+    //戦闘時の移動ベクトル
+    private Vector3 CalcurationMovement(float deltaTime)
     {
         Vector3 movement = new Vector3();
 
-        movement += stateMachine.transform.right   * stateMachine.InputReader.MovementValue.x;
-        movement += stateMachine.transform.forward * stateMachine.InputReader.MovementValue.y;
+
+        //通常時の移動ベクトル
+        var movementRigth   = stateMachine.transform.right   * stateMachine.InputReader.MovementValue.x;
+
+        var movementForward = stateMachine.transform.forward * stateMachine.InputReader.MovementValue.y;
+
+        
+        //回避時の移動ベクトル
+        var dodgeMovement_Right   = stateMachine.transform.right   * dodgingDirectionInput.x 
+                                      * stateMachine.DodgeLength / stateMachine.DodgeDuration;
+
+        var dodgeMovement_Forward = stateMachine.transform.forward * dodgingDirectionInput.y 
+                                      * stateMachine.DodgeLength / stateMachine.DodgeDuration;
+
+
+        if (remainingDodgeTime > 0.0f)
+        {
+            movement += dodgeMovement_Right  ;
+            movement += dodgeMovement_Forward;
+
+            remainingDodgeTime = Mathf.Max(remainingDodgeTime - deltaTime , 0.0f);
+        }
+        else
+        {
+            stateMachine.MyGameObject.SetActive(true);
+            stateMachine.Particle.Stop();
+            movement += movementRigth;
+            movement += movementForward;
+        }
 
         return  movement;
     }
@@ -94,9 +152,5 @@ public class PlayerTargetingState : PlayerBaseState
             float value = stateMachine.InputReader.MovementValue.x > 0 ? 1.0f : -1.0f;
             stateMachine.Animator.SetFloat(TargetingRightHash, value , 0.1f , deltaTime);
         }
-
-
     }
-
-
 }

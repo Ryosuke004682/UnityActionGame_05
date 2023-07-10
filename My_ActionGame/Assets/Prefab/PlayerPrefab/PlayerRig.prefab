@@ -1573,10 +1573,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3471135775974130032}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4fe0b80b4ef0831448b4d46f5fbfec82,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3470389022027642566}
   m_SourcePrefab: {fileID: 100100000, guid: 4fe0b80b4ef0831448b4d46f5fbfec82, type: 3}
 --- !u!4 &3216553189984878532 stripped
 Transform:
@@ -1639,26 +1635,39 @@ MonoBehaviour:
   <Controller>k__BackingField: {fileID: 5954425711587511066}
   <Animator>k__BackingField: {fileID: 5260862025697087944}
   <Targeter>k__BackingField: {fileID: 470201198862844463}
-  <Receiveret>k__BackingField: {fileID: 0}
+  <Receiver>k__BackingField: {fileID: 0}
+  <Weapon>k__BackingField: {fileID: 0}
+  <Foot>k__BackingField: {fileID: 0}
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: Attack2
     <ComboAttackTime>k__BackingField: 0.6
     <TransitionDuration>k__BackingField: 0.1
-    <ComboStateIndex>k__BackingField: 1
     <ForceTime>k__BackingField: 0.35
     <Force>k__BackingField: 15
+    <ComboStateIndex>k__BackingField: 1
+    <WeaponDamage>k__BackingField: 0
+    <FootDamage>k__BackingField: 0
+    <Knockback>k__BackingField: 0
   - <AnimationName>k__BackingField: Attack1
     <ComboAttackTime>k__BackingField: 0.5
     <TransitionDuration>k__BackingField: 0.1
-    <ComboStateIndex>k__BackingField: 2
     <ForceTime>k__BackingField: 0.35
     <Force>k__BackingField: 15
+    <ComboStateIndex>k__BackingField: 2
+    <WeaponDamage>k__BackingField: 0
+    <FootDamage>k__BackingField: 0
+    <Knockback>k__BackingField: 0
   - <AnimationName>k__BackingField: Attack3
     <ComboAttackTime>k__BackingField: 0
     <TransitionDuration>k__BackingField: 0.2
-    <ComboStateIndex>k__BackingField: -1
     <ForceTime>k__BackingField: 0.35
     <Force>k__BackingField: 20
+    <ComboStateIndex>k__BackingField: -1
+    <WeaponDamage>k__BackingField: 0
+    <FootDamage>k__BackingField: 0
+    <Knockback>k__BackingField: 0
+  <Health>k__BackingField: {fileID: 0}
+  <Ragdoll>k__BackingField: {fileID: 0}
   <TargetingMoveSpeed>k__BackingField: 0
   <FreeLookMoveSpeed>k__BackingField: 8
   <RotationDamping>k__BackingField: 15
@@ -1796,17 +1805,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3470389022027642566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8795075370840186503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91b44c5e83d94f84295d2342956db7ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 3471135775974130032}
-  footStepSound: {fileID: 8300000, guid: 588935fd0c97c02459b9995a44af22a6, type: 3}

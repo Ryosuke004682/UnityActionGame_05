@@ -48,7 +48,7 @@ public class Targeter : MonoBehaviour
         {
             Vector2 viewPos = mainCamera.WorldToViewportPoint(target.transform.position);
 
-            if (viewPos.x < 0.0f || viewPos.x > 1.0f || viewPos.y < 0.0f || viewPos.y > 1.0f)
+            if (!target.GetComponentInChildren<Renderer>().isVisible)
             {
                 continue;
             }

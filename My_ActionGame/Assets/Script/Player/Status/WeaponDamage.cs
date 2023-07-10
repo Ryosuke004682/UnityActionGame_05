@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponDamage : MonoBehaviour
 {
     [SerializeField] private Collider myCollider;
+    [SerializeField] private Collider blockCollider;
 
     private List<Collider> alreadyCollidedWith = new List<Collider>();
 
@@ -28,16 +29,13 @@ public class WeaponDamage : MonoBehaviour
             health.DealDamage(damage);//É_ÉÅÅ[ÉWÇó^Ç¶ÇÈ
         }
 
-        if(other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
+        if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
         {
             Vector3 direction = ((other.transform.position - myCollider.transform.position).normalized);
 
-
             forceReceiver.AddForce(direction * Knockback);
         }
-
     }
-
     public void SetWeaponAttack_One(int weaponDamage_One , float knockback)
     {
         this.damage = weaponDamage_One;
@@ -49,4 +47,6 @@ public class WeaponDamage : MonoBehaviour
         this.damage = weaponDamage_Two;
         this.Knockback = knockback;
     }
+
+    
 }

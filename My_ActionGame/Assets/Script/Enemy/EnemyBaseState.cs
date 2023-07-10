@@ -36,6 +36,8 @@ public abstract class EnemyBaseState : State
     /* チェイスの検知範囲 */
     protected bool IsInChaseRange()
     {
+        if (stateMachine.Player.IsDead) { return false; }
+
         float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
 
         return playerDistanceSqr <= stateMachine.PlayerChasingRange * stateMachine.PlayerChasingRange;

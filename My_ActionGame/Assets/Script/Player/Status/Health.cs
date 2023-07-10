@@ -9,11 +9,13 @@ public class Health : MonoBehaviour
     
     
     private int  health;
-    private bool isInvunerble;
+    private bool isInvulnerble;
 
 
     public event Action OnTakeDamage;
     public event Action OnDeath;
+
+    public bool IsDead => health == 0;
 
     private void Start()
     {
@@ -22,14 +24,14 @@ public class Health : MonoBehaviour
 
     public void SetInvulnerable(bool isInvunerable)
     {
-        this.isInvunerble = isInvunerable;
+        this.isInvulnerble = isInvunerable;
     }
 
     public void DealDamage(int damage)
     {
         if (health == 0)  { return; }
 
-        if (isInvunerble) { return; }
+        if (isInvulnerble) { return; }
         
 
         health = Mathf.Max(health - damage, 0);
