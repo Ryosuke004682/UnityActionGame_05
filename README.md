@@ -36,3 +36,8 @@ HPゲージの制作
 敵の種類をもっと増やす  
 細かいバグの修正  
 
+---  
+他にも作品作ってます！  
+ポートフォリオは下記のURLから飛べます！  
+https://incredible-platinum-02b.notion.site/Portfolio-a6fd83cc9c9748b6a9b8eee12c67e083?pvs=4
+
